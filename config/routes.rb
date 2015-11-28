@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'static#welcome'
+
   get 'about' => 'static#about'
 
   resources :subscribers, only: [:new, :create]
