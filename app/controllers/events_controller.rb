@@ -1,74 +1,57 @@
-class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+require 'twilio-ruby'
 
-  # GET /events
-  # GET /events.json
+class EventsController < ApplicationController
   def index
     @events = Event.later_than_today.order(:date_and_time)
   end
 
-  # GET /events/1
-  # GET /events/1.json
-  def show
-  end
-
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
-  def edit
-  end
-
-  # POST /events
-  # POST /events.json
   def create
-    @event = Event.new(event_params)
+    community = Community.find(params[:event][:community_id])
+    @event = community.events.new(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'You have created an event successfully' }
-        format.json { render :show, status: :created, location: @event }
+        format.html { redirect_to @event, notice: 'You have set up an event, and all members of your community have been automatically notified via email and/or SMS.' }
+
+        message = "You are invited to #{@event.title} on #{@event.date_and_time.to_formatted_s(:short)}."
+
+        message += " Women only, please." if @event.female_only
+        message += " Children are welcome." if @event.children_welcome
+        message += " Childcare will be provided." if @event.childcare
+
+        mobile_numbers = community.subscribers.pluck('mobile')
+
+        send_sms(mobile_numbers, message)
       else
         format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /events/1
-  # DELETE /events/1.json
-  def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:title, :location, :community_id, :female_only, :children_welcome, :childcare, :date_and_time)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:title, :location, :community_id, :female_only, :children_welcome, :childcare, :date_and_time)
+  end
+
+  def send_sms(subscribers, message)
+    account_sid = ENV['twilio_sid']
+    auth_token = ENV['twilio_auth_token']
+    client = Twilio::REST::Client.new account_sid, auth_token
+
+    from = ENV['twilio_number']
+
+    subscribers.each do |subscriber|
+      client.account.messages.create(
+        :from => from,
+        :to => subscriber,
+        :body => message
+      )
     end
+  end
 end
