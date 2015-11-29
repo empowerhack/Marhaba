@@ -5,6 +5,21 @@
       %th{:colspan => "3"}
   %tbody
     - if @events.any?
+      %table.table.tableHeader
+        %thead
+          %tr
+            %td
+              Event title
+            %td
+              Location
+            %td
+              Date and time
+            %td
+              Female Only
+            %td
+              Children Welcome
+            %td
+              Childcare
       - @events.each do |event|
         %table.table
           %thead
@@ -14,4 +29,10 @@
               %td
                 = event.location
               %td
-                = event.date_and_time.to_formatted_s(:long)
+                = event.date_and_time.to_formatted_s(:short)
+              %td
+                = translateBoolean(event.female_only).html_safe
+              %td
+                = translateBoolean(event.children_welcome).html_safe
+              %td
+                = translateBoolean(event.childcare).html_safe

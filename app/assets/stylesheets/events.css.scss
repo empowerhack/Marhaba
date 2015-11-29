@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.tableHeader {
+  font-weight: bold;
+}
+
 table {
-  table-layout:fixed;
+  table-layout: fixed;
+  font-size: 20px;
 }
 
 td {
