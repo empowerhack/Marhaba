@@ -6,6 +6,8 @@
   .form-group
     = f.collection_select :community_id, Community.all, :id, :name
   .form-group
+    = f.datetime_select :date_and_time, :minute_step => 30
+  .form-group
     = f.check_box :female_only
     = f.label :female_only
   .form-group
