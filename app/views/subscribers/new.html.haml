@@ -15,6 +15,6 @@
         .form-group
           = f.text_field :mobile, autofocus: true, placeholder: 'mobile number', class: 'form-control'
         .form-group
-          = f.collection_select :community_id, Community.all, :id, :name, {prompt: "Community"}, {class: 'form-control'}
+          = f.collection_select :community_id, Community.all, :id, :name, {prompt: "Select your community"}, {class: 'form-control'}
         .actions
           = f.submit "Sign up", class: 'btn btn-large'

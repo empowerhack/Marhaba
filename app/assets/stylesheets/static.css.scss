@@ -5,13 +5,14 @@
 
 
 body {
+  font-family: 'Arial Rounded MT Bold';
   .page-header {
     padding: 0 2em;
     margin-top: 20px;
+    margin-bottom: 0;
   }
 
   main.content {
-    padding: 0 2em;
   }
 
   .footer-content {
@@ -22,5 +23,40 @@ body {
     color: white;
     width: 100%;
     text-align: center;
+  }
+
+  .landing-page {
+    background-clip: content-box;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url('campphoto.jpg'); 
+
+    .tag-line {
+      width: 100%;
+      text-align: center;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 3em;
+      padding-top: 3em;
+
+      h3 {
+        color: white;
+        font-size: 3em;
+      }
+
+    }
+    .buttons-container {
+      text-align: center;
+      margin-top: 3em;
+
+      .btn-huge {
+        padding: 0.5em 1.5em;
+        font-size: 2em;
+        margin: 1em;
+      }
+
+    }
+
   }
 }
