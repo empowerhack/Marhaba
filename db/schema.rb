@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129123117) do
+ActiveRecord::Schema.define(version: 20151129124647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151129123117) do
     t.string   "location"
     t.boolean  "female_only"
     t.boolean  "children_welcome"
+    t.boolean  "childcare"
   end
 
   add_index "events", ["community_id"], name: "index_events_on_community_id", using: :btree

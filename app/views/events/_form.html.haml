@@ -4,13 +4,16 @@
   .form-group
     = f.text_field :location, :placeholder => "Location"
   .form-group
+    = f.collection_select :community_id, Community.all, :id, :name
+  .form-group
     = f.check_box :female_only
     = f.label :female_only
   .form-group
     = f.check_box :children_welcome
     = f.label :children_welcome
   .form-group
-    = f.collection_select :community_id, Community.all, :id, :name
+    = f.check_box :childcare
+    = f.label :childcare
   - if @event.errors.any?
     #error_explanation
       %h2

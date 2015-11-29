@@ -5,5 +5,6 @@ class AddFieldsToEvent < ActiveRecord::Migration
     add_column :events, :location, :string
     add_column :events, :female_only, :boolean
     add_column :events, :children_welcome, :boolean
+    add_column :events, :childcare, :boolean
   end
 end
