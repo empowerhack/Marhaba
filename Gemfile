@@ -47,3 +47,4 @@ gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'haml'
 gem 'haml-rails', group: :development
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
