@@ -25,4 +25,5 @@
         - @event.errors.full_messages.each do |message|
           %li= message
   .actions
-    = f.submit, class: 'btn btn-large'
+    = f.submit "Create", class: 'btn btn-large'
+    = f.label "By clicking this button you will invite everybody in your community"
