@@ -10,6 +10,9 @@
     %header.page-header
       = render partial: 'layouts/header'
     %main.content
+      - if flash && flash.to_hash["alert"].present?
+        - flash.each do |name, msg|
+          = content_tag :div, msg, class: 'alert alert-info'
       = yield
     %footer
       = render partial: 'layouts/footer'
