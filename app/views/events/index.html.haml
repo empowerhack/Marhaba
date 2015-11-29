@@ -1,13 +1,18 @@
-%h1 Listing events
+%h1 All active events
 %table
   %thead
     %tr
       %th{:colspan => "3"}
   %tbody
-    - @events.each do |event|
-      %tr
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+    - if @events.any?
+      - @events.each do |event|
+        .container
+          .row
+            .col-sm-3.col-md-2
+              =event.title
+            .col-sm-9.col-md-8
+              =event.location
+            .col-sm-12.col-md-2
+              =event.date_and_time
 %br/
 = link_to 'New Event', new_event_path
