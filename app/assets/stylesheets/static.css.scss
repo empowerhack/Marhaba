@@ -3,3 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'variables';
 
+
+body {
+  .page-header {
+    padding: 0 2em;
+    margin-top: 20px;
+  }
+
+  main.content {
+    padding: 0 2em;
+  }
+
+  .footer-content {
+    padding: 1em 2em;
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    width: 100%;
+  }
+}
