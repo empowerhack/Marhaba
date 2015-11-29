@@ -4,4 +4,7 @@ class StaticController < ApplicationController
 
   def host_event
   end
+
+  def success
+  end
 end

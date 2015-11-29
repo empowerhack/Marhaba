@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   root 'static#welcome'
 
   get 'about' => 'static#about'
+ get 'success' => 'static#success'
 
-  resources :subscriber, only: [:new, :create]
-  resources :community, only: [:new, :create]
+  resources :subscribers, only: [:new, :create]
+  resources :communities, only: [:new, :create]
 
   get '/join' => 'subscriber#new'
 
