@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'static#welcome'
 
   get 'about' => 'static#about'
+  get 'host' => 'static#host_event'
 
   resources :subscriber, only: [:new, :create]
   resources :community, only: [:new, :create]

@@ -1,0 +1,14 @@
+%h3 Have you been here before?
+
+= form_tag session_path(:host) do
+  .form-group
+    = text_field_tag 'host[email]'
+  .form-group
+    = password_field_tag 'host[password]'
+  .form-group
+    = check_box_tag 'host[remember_me]'
+    = label_tag 'host[remember_me]', 'Remember me'
+  %button.btn.btn-default Sign in
+
+= link_to "I'm new", new_host_registration_path, class: 'btn btn-default'
+
