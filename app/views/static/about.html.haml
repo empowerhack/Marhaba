@@ -1,5 +1,10 @@
-%h1 About Marhaba Team
-%main
-  Beautiful content about our team
-
-= link_to "Sign out", destroy_host_session_path, method: 'delete'
+.container
+  .row
+    .col-md-6
+      %h1 About Marhaba
+      %main
+        .about-content
+          %p Marhaba is an online and offline community building and skill sharing tool for women in refugee camps. It is built to support Volunteers and NGO workers to co-organise girls and women and give them a chance to build up skills for the successful future.
+          %p Marhaba invites members to join groups with common interest, such as digital skills learning, 3dprinting jewellery, language learning, mobile phone repairs and many others.
+          %p The app helps the organisers to keep in touch with the Marhaba meetings’ participants. Once you join, you can build up on the community skills and power up your abilities.
+          = link_to 'Subscribe now!', new_subscriber_path
