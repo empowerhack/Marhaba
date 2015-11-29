@@ -17,7 +17,7 @@ class EventsController < ApplicationController
       if @event.save
         format.html { redirect_to @event, notice: 'You have set up an event, and all members of your community have been automatically notified via email and/or SMS.' }
 
-        message = "You are invited to #{@event.title} on #{@event.date_and_time.to_formatted_s(:short)}."
+        message = "You are invited to #{@event.title} on #{@event.date_and_time.to_formatted_s(:short)} at #{@event.location}."
 
         message += " Women only, please." if @event.female_only
         message += " Children are welcome." if @event.children_welcome
