@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'static#about'
 
-  resources :subscriber, only: [:new, :create]
+  resources :subscribers, only: [:new, :create]
   resources :community, only: [:new, :create]
 
   get '/join' => 'subscriber#new'

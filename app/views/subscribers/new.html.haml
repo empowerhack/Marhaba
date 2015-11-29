@@ -1,0 +1,11 @@
+%h2 Sign up to learn about events happening in your community
+
+= form_for @subscriber do |f|
+  .form-group
+    = f.text_field :name, autofocus: true, placeholder: 'name'
+  .form-group
+    = f.email_field :email, autofocus: true, placeholder: 'email'
+  .form-group
+    = f.text_field :mobile, autofocus: true, placeholder: 'mobile number'
+  .actions
+    = f.submit "Sign up"
