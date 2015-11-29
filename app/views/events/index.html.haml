@@ -6,13 +6,12 @@
   %tbody
     - if @events.any?
       - @events.each do |event|
-        .container
-          .row
-            .col-sm-3.col-md-2
-              =event.title
-            .col-sm-9.col-md-8
-              =event.location
-            .col-sm-12.col-md-2
-              =event.date_and_time
-%br/
-= link_to 'New Event', new_event_path
+        %table.table
+          %thead
+            %tr
+              %td
+                = event.title
+              %td
+                = event.location
+              %td
+                = event.date_and_time
