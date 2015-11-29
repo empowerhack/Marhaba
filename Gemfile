@@ -45,4 +45,5 @@ gem 'thin'
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'figaro'
-gem 'spring', group: :development
+gem 'haml'
+gem 'haml-rails', group: :development
