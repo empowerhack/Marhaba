@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'static#welcome'
 
   get 'about' => 'static#about'
- get 'success' => 'static#success'
+  get 'success' => 'static#success'
 
   resources :subscribers, only: [:new, :create]
   resources :communities, only: [:new, :create]
