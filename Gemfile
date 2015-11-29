@@ -48,3 +48,4 @@ gem 'figaro'
 gem 'haml'
 gem 'haml-rails', group: :development
 gem 'pry-rails'
+gem 'twilio-ruby'
