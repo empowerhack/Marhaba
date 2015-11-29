@@ -4,7 +4,8 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    community = Community.find(params[:subscriber][:community_id])
+    @subscriber = community.subscribers.new(subscriber_params)
     if @subscriber.save
       redirect_to success_path
     else
