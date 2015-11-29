@@ -4,9 +4,9 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    @subscriber = Subscriber.create(subscriber_params)
+    @subscriber = Subscriber.new(subscriber_params)
     if @subscriber.save
-      redirect_to events_path
+      redirect_to success_path
     else
       render 'new'
     end

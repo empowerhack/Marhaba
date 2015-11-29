@@ -1,6 +1,10 @@
 %h2 Sign up to learn about events happening in your community
 
 = form_for @subscriber do |f|
+  - if @subscriber.errors.any?
+    - @subscriber.errors.full_messages.each do |error|
+      = error
+
   .form-group
     = f.text_field :name, autofocus: true, placeholder: 'name'
   .form-group
