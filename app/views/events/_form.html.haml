@@ -1,10 +1,10 @@
 = form_for(@event) do |f|
   .form-group
-    = f.text_field :title, :placeholder => "Event name"
+    = f.text_field :title, autofocus: true, placeholder: "Event name", class: 'form-control'
   .form-group
-    = f.text_field :location, :placeholder => "Location"
+    = f.text_field :location, autofocus: true, placeholder: "Location", class: 'form-control'
   .form-group
-    = f.collection_select :community_id, Community.all, :id, :name
+    = f.collection_select :community_id, Community.all, :id, :name, {prompt: "Select your community"}, {class: 'form-control'}
   .form-group
     = f.datetime_select :date_and_time, :minute_step => 30
   .form-group
